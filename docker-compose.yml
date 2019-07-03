@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on: 
+      - odm-mongo
+  odm-mongo:
+    image: "mongo"
+    ports:
+      - 27017:27017
+# map local drive to internal drive in container
+    volumes:
+      - ~/learn/mongo/db:/data/db
